@@ -1,11 +1,18 @@
-media: media
+media:
+  input: images
+  output: /images
+
 content:
-  - name: pages
-    label: Pages
+  - name: products
+    label: Products
     type: collection
-    path: docs
+    path: products
     fields:
-      - name: title
-        type: string
-      - name: body
-        type: rich-text
+      - { name: name, label: Product name, type: string }
+      - { name: price, label: Price, type: number }
+      - { name: category, label: Category, type: select, options: { values: [bestsellers, fidgets, desk, jewelry, keychains, gifts, custom] } }
+      - { name: images, label: Photos, type: image, list: true }
+      - { name: best, label: Best seller?, type: boolean }
+      - { name: isNew, label: New?, type: boolean }
+      - { name: note, label: Note, type: string }
+      - { name: size, label: Size, type: string }
