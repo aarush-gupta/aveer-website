@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Bot Creations — Fun, unique 3D prints</title>
+<meta name="description" content="Little Bot Creations: fun, unique 3D prints made to order, in the color you pick. Shop clickers, name clickers, pencil holders, keychains, jewelry stands and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#top" aria-label="Little Bot Creations home">
+      <svg class="logo-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="7" y="12" width="20" height="16" rx="5" fill="#3457D5"/>
+        <rect x="14" y="4" width="6" height="7" rx="3" fill="#3457D5"/>
+        <circle cx="17" cy="6" r="2" fill="#FFC145"/>
+        <circle cx="13" cy="20" r="2.6" fill="#FAF9F6"/>
+        <circle cx="21" cy="20" r="2.6" fill="#FAF9F6"/>
+        <rect x="11" y="25" width="12" height="2.4" rx="1.2" fill="#FAF9F6"/>
+        <rect x="2" y="17" width="4" height="8" rx="2" fill="#3457D5"/>
+        <rect x="28" y="17" width="4" height="8" rx="2" fill="#3457D5"/>
+      </svg>
+      <span class="logo-text">Little Bot Creations</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#shop">Shop</a>
+      <a href="#custom">Custom</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-wrap">
+        <button id="searchToggle" class="icon-btn" aria-label="Search prints" aria-expanded="false" aria-controls="searchBox">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="2"/><line x1="13" y1="13" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="search-box" id="searchBox">
+          <input type="search" id="searchInput" placeholder="Search prints… try “dragon” or “keychain”" aria-label="Search prints">
+        </div>
+      </div>
+      <button id="cartToggle" class="icon-btn cart-btn" aria-label="Open cart, 0 items">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M2 3h2l1.6 10.6a2 2 0 0 0 2 1.7h8a2 2 0 0 0 2-1.6L19 7H5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19" r="1.4" fill="currentColor"/><circle cx="16" cy="19" r="1.4" fill="currentColor"/></svg>
+        <span id="cartCount" class="cart-count" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Little Bot Creations</h1>
+        <p class="hero-sub">Fun, unique 3D prints — made to order, in the color you pick.</p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-primary">Shop prints</a>
+          <a href="#custom" class="btn btn-outline">Request a custom print</a>
+        </div>
+      </div>
+      <div class="hero-gallery" aria-hidden="true">
+        <img class="pin pin-1" src="images/Sword.JPG" alt="" loading="lazy">
+        <img class="pin pin-2" src="images/Macaron.JPG" alt="" loading="lazy">
+        <img class="pin pin-3" src="images/dragon.jpeg" alt="" loading="lazy">
+        <img class="pin pin-4" src="images/Keychains2.jpeg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Best sellers ===== -->
+  <section class="section" id="bestsellers">
+    <div class="section-head">
+      <h2>Popular right now</h2>
+      <p class="section-note">The prints people keep coming back for.</p>
+    </div>
+    <div class="scroll-row" id="bestSellersRow"></div>
+  </section>
+
+  <!-- ===== New prints ===== -->
+  <section class="section alt" id="new-prints">
+    <div class="section-head">
+      <h2>New prints</h2>
+      <p class="section-note">Fresh off the printer.</p>
+    </div>
+    <div class="scroll-row" id="newPrintsRow"></div>
+  </section>
+
+  <!-- ===== Shop ===== -->
+  <section class="section shop" id="shop">
+    <div class="section-head">
+      <h2>Shop the full catalog</h2>
+      <p class="section-note">Pick a category, or search for something specific. Specialty and dual/triple colors add $1.</p>
+    </div>
+    <div class="category-pills" id="categoryPills" role="tablist" aria-label="Product categories"></div>
+    <div class="product-grid" id="productGrid"></div>
+    <p id="noResults" class="no-results" hidden>Nothing matches that search. Try a different word, or request a custom design below.</p>
+  </section>
+
+  <!-- ===== About the creator ===== -->
+  <section class="section about" id="about">
+    <div class="about-inner">
+      <div class="about-photo">
+        <img id="creatorPhoto" src="images/creator-workspace.jpg" alt="The creator's 3D printing workspace" loading="lazy">
+        <div class="photo-fallback">📷 Add a photo of your printer or workspace at <code>images/creator-workspace.jpg</code></div>
+      </div>
+      <div class="about-copy">
+        <h2>Meet the creator</h2>
+        <p>Hi, I'm the maker behind Little Bot Creations! I'm 11 years old and I love 3D printing — designing new things, picking colors, and figuring out how to make ideas actually work in plastic.</p>
+        <p>Everything here is printed with kid-friendly PLA filament, which is made from cornstarch. It's safe to handle and play with — but sadly, it is not edible, so please don't take a bite.</p>
+        <p>Every order helps me buy filament, keep learning new designs, and try things I haven't printed before. Thanks for stopping by my shop!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section alt" id="how-it-works">
+    <div class="section-head">
+      <h2>How it works</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="step-num">1</span><h3>Choose a print</h3><p>Browse the catalog or search for something specific.</p></li>
+      <li><span class="step-num">2</span><h3>Pick your color</h3><p>Every print can be made in any color from the palette.</p></li>
+      <li><span class="step-num">3</span><h3>Place your order</h3><p>Add it to your cart and check out securely.</p></li>
+      <li><span class="step-num">4</span><h3>It gets printed</h3><p>Your piece is queued up and printed to order.</p></li>
+      <li><span class="step-num">5</span><h3>You get your creation</h3><p>Ready for pickup or on its way to you.</p></li>
+    </ol>
+  </section>
+
+  <!-- ===== Custom CTA ===== -->
+  <section class="section custom-cta" id="custom">
+    <div class="custom-inner">
+      <h2>Have an idea?</h2>
+      <p>Can't find what you're looking for? Tell me what you want made and I'll see if I can print it.</p>
+      <a href="https://forms.gle/sfZcHqLcecstn6UR6" target="_blank" rel="noopener" class="btn btn-light btn-lg">Request a custom creation →</a>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section contact" id="contact">
+    <div class="section-head">
+      <h2>Contact us</h2>
+      <p class="section-note">Questions about an order, a color, or something you want printed? Get in touch.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Call or text</h3>
+        <a class="contact-phone" href="tel:+15514040795">551 404 0795</a>
+        <p>Best for quick questions about an order that's already placed.</p>
+      </div>
+      <div class="contact-card">
+        <h3>Custom requests</h3>
+        <p>Have a design in mind? Send the details through the order form and I'll tell you if I can print it and what it would cost.</p>
+        <a class="btn btn-outline" href="https://forms.gle/sfZcHqLcecstn6UR6" target="_blank" rel="noopener">Open the order form</a>
+      </div>
+      <div class="contact-card">
+        <h3>Before you ask</h3>
+        <p>Every print is made to order in the color you choose. Specialty and dual/triple colors add $1. Name prints hold up to 10 letters — name clickers hold up to 8.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Built by ===== -->
+  <section class="built-by">
+    <div class="built-by-inner">
+      <svg width="40" height="40" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="7" y="12" width="20" height="16" rx="5" fill="#FFC145"/>
+        <rect x="14" y="4" width="6" height="7" rx="3" fill="#FFC145"/>
+        <circle cx="13" cy="20" r="2.6" fill="#1B1F3B"/>
+        <circle cx="21" cy="20" r="2.6" fill="#1B1F3B"/>
+        <rect x="11" y="25" width="12" height="2.4" rx="1.2" fill="#1B1F3B"/>
+      </svg>
+      <div>
+        <h2>This website was built by Aarush Gupta</h2>
+        <p>Designed, coded and stocked by hand — the shop, the cart and every product page.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Little Bot Creations · Built by Aarush Gupta</p>
+  <p class="footer-links">
+    <a href="tel:+15514040795">551 404 0795</a>
+    <a href="https://forms.gle/sfZcHqLcecstn6UR6" target="_blank" rel="noopener">Order form</a>
+  </p>
+</footer>
+
+<!-- ===== Cart drawer ===== -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h2>Your cart</h2>
+    <button id="closeCart" class="icon-btn" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <p id="emptyCartMsg" class="empty-cart">Your cart is empty. Go add something fun!</p>
+  <div class="cart-footer" id="cartFooter" hidden>
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <button id="checkoutBtn" class="btn btn-primary btn-block">Checkout</button>
+    <p class="cart-note">Colors, quantities and notes can still be changed here before you pay.</p>
+  </div>
+</aside>
+
+<!-- ===== Product modal ===== -->
+<div class="modal" id="productModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <button class="modal-close" id="closeProductModal" aria-label="Close">✕</button>
+    <div class="modal-grid">
+      <div class="modal-media">
+        <div class="modal-preview" id="modalPreview">
+          <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-thumbs" id="modalThumbs" hidden></div>
+      </div>
+      <div class="modal-details">
+        <span class="modal-category" id="modalCategory"></span>
+        <h3 id="modalName"></h3>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-size" id="modalSize" hidden></p>
+
+        <div class="color-picker">
+          <p class="picker-label">Choose your color</p>
+          <div class="color-swatches" id="colorSwatches"></div>
+          <p class="selected-color">Selected: <span id="selectedColorName">White</span></p>
+        </div>
+
+        <div class="personalize" id="personalizeBlock" hidden>
+          <p class="picker-label">Add your name</p>
+          <input type="text" id="nameInput" class="name-input" maxlength="10" placeholder="e.g. Aarush" autocomplete="off" aria-describedby="nameHint">
+          <p class="name-hint" id="nameHint"></p>
+
+          <div class="clicker-block" id="clickerBlock" hidden>
+            <p class="picker-label">How many clickers?</p>
+            <div class="qty-stepper">
+              <button id="clickerMinus" aria-label="Fewer clickers">−</button>
+              <span id="clickerValue">1</span>
+              <button id="clickerPlus" aria-label="More clickers">+</button>
+            </div>
+            <p class="clicker-note">$2 for one clicker, $1 for each one after that. Max 8.</p>
+          </div>
+        </div>
+
+        <div class="note-picker">
+          <p class="picker-label">Notes for this item <span class="optional">optional</span></p>
+          <textarea id="itemNote" class="note-input" rows="2" placeholder="e.g. make the eyes black, or it's a birthday gift"></textarea>
+        </div>
+
+        <div class="qty-picker">
+          <p class="picker-label">Quantity</p>
+          <div class="qty-stepper">
+            <button id="qtyMinus" aria-label="Decrease quantity">−</button>
+            <span id="qtyValue">1</span>
+            <button id="qtyPlus" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <button id="addToCartBtn" class="btn btn-primary btn-block">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Checkout modal ===== -->
+<div class="modal" id="checkoutModal" aria-hidden="true">
+  <div class="modal-card checkout-card" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="modal-close" id="closeCheckoutModal" aria-label="Close">✕</button>
+    <h3 id="checkoutTitle">Checkout</h3>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <div class="checkout-total"><span>Total</span><span id="checkoutTotal">$0.00</span></div>
+    <div id="paypal-button-container"></div>
+    <p class="checkout-note">Payment is handled securely by PayPal — pay with a PayPal balance or a debit/credit card as a guest, no account needed.</p>
+  </div>
+</div>
+
+<!-- ===== Success modal ===== -->
+<div class="modal" id="successModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <button class="modal-close" id="closeSuccessModal" aria-label="Close">✕</button>
+    <h3 id="successTitle">Thank you! 🎉</h3>
+    <p id="successMessage">Your order went through. I'll get started on your print soon!</p>
+  </div>
+</div>
+
+<!-- PayPal SDK: replace client-id=test with your own live/sandbox Client ID from developer.paypal.com -->
+<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&intent=capture"></script>
+<script src="app.js"></script>
+</body>
+</html>
